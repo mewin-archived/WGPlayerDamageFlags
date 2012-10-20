@@ -31,8 +31,8 @@ public class WGDamageFlagPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        pluginWGCustomFlags = Utils.getWGCustomFlags(this);
         pluginWorldGuard = Utils.getWorldGuard(this);
+        pluginWGCustomFlags = Utils.getWGCustomFlags(this);
         listenerplayerDamage = new PlayerDamageListener(this);
 
         pluginWGCustomFlags.addCustomFlag(ALLOW_DAMAGE_FLAG);
