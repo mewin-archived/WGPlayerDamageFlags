@@ -1,0 +1,5 @@
+name: WGDamageFlag
+author: BangL
+version: 0.1
+main: de.bangl.wgdf.WGDamageFlagPlugin
+depend: [ WorldGuard, WGCustomFlags ]
