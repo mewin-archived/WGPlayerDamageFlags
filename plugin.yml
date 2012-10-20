@@ -3,3 +3,4 @@ author: BangL
 version: 0.1
 main: de.bangl.wgpdf.WGPlayerDamageFlags
 depend: [ WorldGuard, WGCustomFlags ]
+description: '"WorldGuard" extension to block specific damage types on players in specific regions.'

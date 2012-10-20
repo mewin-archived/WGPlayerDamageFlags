@@ -1,4 +1,4 @@
-WGDamageFlag
+WGPlayerDamageFlags
 ============
 
-adds a flag to WorldGuard that allows you to block specific damage types
+"WorldGuard" extension to block specific damage types on players in specific regions.
