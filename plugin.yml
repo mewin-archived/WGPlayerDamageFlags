@@ -1,5 +1,5 @@
-name: WGDamageFlag
+name: WGPlayerDamageFlags
 author: BangL
 version: 0.1
-main: de.bangl.wgdf.WGDamageFlagPlugin
+main: de.bangl.wgpdf.WGPlayerDamageFlags
 depend: [ WorldGuard, WGCustomFlags ]

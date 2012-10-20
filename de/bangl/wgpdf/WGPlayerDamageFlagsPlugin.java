@@ -1,19 +1,18 @@
-package de.bangl.wgdf;
+package de.bangl.wgpdf;
 
 import com.mewin.WGCustomFlags.WGCustomFlagsPlugin;
 import com.mewin.WGCustomFlags.flags.CustomSetFlag;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.EnumFlag;
-import de.bangl.wgdf.listener.PlayerDamageListener;
-import org.bukkit.event.entity.EntityDamageEvent;
+import de.bangl.wgpdf.listener.PlayerDamageListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  *
  * @author BangL
  */
-public class WGDamageFlagPlugin extends JavaPlugin {
-    public static final EnumFlag DAMAGE_CAUSE_FLAG = new EnumFlag("damage-cause", EntityDamageEvent.DamageCause.class);
+public class WGPlayerDamageFlagsPlugin extends JavaPlugin {
+    public static final EnumFlag DAMAGE_CAUSE_FLAG = new EnumFlag("damage-cause", DmgCause.class);
     public static final CustomSetFlag ALLOW_DAMAGE_FLAG = new CustomSetFlag("allow-damage", DAMAGE_CAUSE_FLAG);
     public static final CustomSetFlag DENY_DAMAGE_FLAG = new CustomSetFlag("deny-damage", DAMAGE_CAUSE_FLAG);
 

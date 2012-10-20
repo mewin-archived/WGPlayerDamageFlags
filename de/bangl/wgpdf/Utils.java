@@ -1,4 +1,4 @@
-package de.bangl.wgdf;
+package de.bangl.wgpdf;
 
 import com.mewin.WGCustomFlags.WGCustomFlagsPlugin;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
@@ -20,7 +20,7 @@ import org.bukkit.plugin.Plugin;
  */
 public class Utils {
 
-    public static WGCustomFlagsPlugin getWGCustomFlags(WGDamageFlagPlugin plugin) {
+    public static WGCustomFlagsPlugin getWGCustomFlags(WGPlayerDamageFlagsPlugin plugin) {
         final Plugin wgcf = plugin.getServer().getPluginManager().getPlugin("WGCustomFlags");
         if (wgcf == null || !(wgcf instanceof WGCustomFlagsPlugin)) {
             return null;
@@ -28,7 +28,7 @@ public class Utils {
         return (WGCustomFlagsPlugin)wgcf;
     }
 
-    public static WorldGuardPlugin getWorldGuard(WGDamageFlagPlugin plugin) {
+    public static WorldGuardPlugin getWorldGuard(WGPlayerDamageFlagsPlugin plugin) {
         final Plugin wg = plugin.getServer().getPluginManager().getPlugin("WorldGuard");
         if (wg == null || !(wg instanceof WorldGuardPlugin)) {
             return null;
@@ -99,15 +99,27 @@ public class Utils {
     }
 
     public static Object dmgAllowedInRegion(ProtectedRegion region, DamageCause cause) {
-        HashSet<DamageCause> allowedBlocks = (HashSet<DamageCause>) region.getFlag(WGDamageFlagPlugin.ALLOW_DAMAGE_FLAG);
-        HashSet<DamageCause> blockedBlocks = (HashSet<DamageCause>) region.getFlag(WGDamageFlagPlugin.DENY_DAMAGE_FLAG);
+        DmgCause dc = castMaterial(cause);
         
-        if (allowedBlocks != null && (allowedBlocks.contains(cause))) {
+        HashSet<DmgCause> allowedCauses = (HashSet<DmgCause>) region.getFlag(WGPlayerDamageFlagsPlugin.ALLOW_DAMAGE_FLAG);
+        HashSet<DmgCause> blockedCauses = (HashSet<DmgCause>) region.getFlag(WGPlayerDamageFlagsPlugin.DENY_DAMAGE_FLAG);
+        
+        if (allowedCauses != null
+                && (allowedCauses.contains(dc) || allowedCauses.contains(DmgCause.ANY))) {
             return true;
         }
-        else if(blockedBlocks != null && (blockedBlocks.contains(cause))) {
+        else if(blockedCauses != null
+                && (blockedCauses.contains(dc) || blockedCauses.contains(DmgCause.ANY))) {
             return false;
         } else {
+            return null;
+        }
+    }
+
+    public static DmgCause castMaterial(DamageCause material) {
+        try {
+            return DmgCause.valueOf(material.name());
+        } catch(IllegalArgumentException ex) {
             return null;
         }
     }
