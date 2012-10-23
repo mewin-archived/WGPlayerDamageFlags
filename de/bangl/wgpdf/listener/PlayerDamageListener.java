@@ -38,8 +38,9 @@ public class PlayerDamageListener implements Listener {
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
         // Only handle if player and dmg cause is not null.
-        if(event.getEntity() instanceof Player
-                && event.getCause() != null) {
+        if(event.getEntity() != null
+                && event.getCause() != null
+                && event.getEntity() instanceof Player) {
             // Cancel if dmg cause is denied here.
             if (!Utils.dmgAllowedAtLocation(plugin.getWGP(), event.getCause(), event.getEntity().getLocation())) {
                 event.setCancelled(true);

@@ -1,7 +1,7 @@
 name: WGPlayerDamageFlags
 main: de.bangl.wgpdf.WGPlayerDamageFlagsPlugin
 description: WorldGuard extension to block specific damage types on players in specific regions.
-version: 0.2
+version: 0.3
 
 authors: [ BangL ]
 depend: [ WorldGuard, WGCustomFlags ]
