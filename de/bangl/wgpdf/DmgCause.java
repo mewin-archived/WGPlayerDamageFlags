@@ -16,6 +16,8 @@
  */
 package de.bangl.wgpdf;
 
+import org.bukkit.event.entity.EntityDamageEvent;
+
 /**
  *
  * @author BangL <henno.rickowski@googlemail.com>
@@ -39,5 +41,6 @@ public enum DmgCause {
     STARVATION,
     SUFFOCATION,
     SUICIDE,
-    VOID;
+    VOID,
+    WITHER
 }
