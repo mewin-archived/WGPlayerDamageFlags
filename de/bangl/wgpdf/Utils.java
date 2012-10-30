@@ -17,6 +17,7 @@
 package de.bangl.wgpdf;
 
 import com.mewin.WGCustomFlags.WGCustomFlagsPlugin;
+import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.managers.RegionManager;
@@ -104,8 +105,11 @@ public class Utils {
             
             return false;
         } else {
-            Object allowed = dmgAllowedInRegion(rm.getRegion("__global__"), cause);
-            
+            ProtectedRegion global = rm.getRegion("__global__");
+            Object allowed = null;
+            if (global != null) {
+                allowed = dmgAllowedInRegion(rm.getRegion("__global__"), cause);
+            }
             if (allowed != null) {
                 return (boolean) allowed;
             } else {
