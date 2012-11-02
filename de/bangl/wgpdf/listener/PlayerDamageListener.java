@@ -30,19 +30,19 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class PlayerDamageListener implements Listener {
     WGPlayerDamageFlagsPlugin plugin;
 
-    public PlayerDamageListener(WGPlayerDamageFlagsPlugin plugin) {
+    public PlayerDamageListener(final WGPlayerDamageFlagsPlugin plugin) {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler
-    public void onPlayerDamage(EntityDamageEvent event) {
+    public void onPlayerDamage(final EntityDamageEvent event) {
         // Only handle if player and dmg cause is not null.
         if(event.getEntity() != null
                 && event.getCause() != null
                 && event.getEntity() instanceof Player) {
             // Cancel if dmg cause is denied here.
-            if (!Utils.dmgAllowedAtLocation(plugin.getWGP(), event.getCause(), event.getEntity().getLocation())) {
+            if (!Utils.dmgAllowedAtLocation(this.plugin, Utils.castCause(event.getCause()), event.getEntity().getLocation())) {
                 event.setCancelled(true);
             }
         }
