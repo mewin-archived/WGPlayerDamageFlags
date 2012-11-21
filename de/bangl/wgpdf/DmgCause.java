@@ -40,5 +40,6 @@ public enum DmgCause {
     SUFFOCATION,
     SUICIDE,
     VOID,
-    WITHER
+    WITHER,
+    FALLING_BLOCK
 }
