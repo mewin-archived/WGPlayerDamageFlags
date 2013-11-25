@@ -24,10 +24,12 @@ public enum DmgCause {
     ANY, 
     BLOCK_EXPLOSION,
     CONTACT,
+    CUSTOM,
     DROWNING,
     ENTITY_ATTACK,
     ENTITY_EXPLOSION,
     FALL,
+    FALLING_BLOCK,
     FIRE,
     FIRE_TICK,
     LAVA,
@@ -39,7 +41,7 @@ public enum DmgCause {
     STARVATION,
     SUFFOCATION,
     SUICIDE,
+    THORNS,
     VOID,
-    WITHER,
-    FALLING_BLOCK
+    WITHER
 }
